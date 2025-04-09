@@ -6,18 +6,19 @@
  //expressoes
 TIPO (int|float|string)
 DIGITO [0-9]
+MASCARA \"(%(c|d|f|s)*)\"
 STRING \"([^\"\n]*)\"
 LETRA [a-zA-Z]+
 INT [0-9]+
-LOGICO (\|\||!|==|!=|>|<|<=|>=|&)
+LOGICO (\|\||!|==|!=|>|<|<=|>=|&&)
 ATRIB [=]
 FLOAT [0-9]+\.[0-9]+
 MATEMATICO (\*\*|[+\-\/\*%]|\+\+|\-\-)
-SIMBOLO [;?:,._\(\)\{\}\[\]]
+SIMBOLO [;?:,._\(\)\{\}\[\]''#&]
 ESPACO [ \t\n\r]+ 
 CONDICIONAL (if|else|switch|case|break)
 REPETICAO (while|for|do)
-FUNC (escreva|leia|funcao)
+FUNC (escreva|leia|funcao|default|main|return)
 VARIAVEL {LETRA}({LETRA}|{DIGITO})*
 COMENTARIO (\~.*)
 COMENTARIO_linhas (~~[^~]*~~)
@@ -32,6 +33,7 @@ COMENTARIO_linhas (~~[^~]*~~)
 {ESPACO} {}
 {ATRIB} {printf("ATRIBUICAO: %s\n", yytext);}
 {FLOAT} {printf("FLOAT: %s\n", yytext);}
+{MASCARA} {printf("MASCARA: %s\n", yytext);}
 {STRING} {printf("STRING: %s\n", yytext);}
 {SIMBOLO} {printf("SIMBOLO: %s\n", yytext);}
 {CONDICIONAL} {printf("CONDICIONAL: %s\n", yytext);}

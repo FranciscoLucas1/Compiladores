@@ -1,0 +1,40 @@
+
+int main() {
+   float num1, num2, resultado;
+   string operador;
+
+   escreva("Digite o primeiro número: ");
+   leia("%f", &num1);
+
+   escreva("Digite o operador (+, -, *, /): ");
+   leia("%c", &operador); ~ Note o espaço em branco antes do %c para ignorar espaços em branco extras
+
+   escreva("Digite o segundo número: ");
+   leia("%f", &num2);
+
+   switch (operador) {
+      case '+':
+         resultado = num1 + num2;
+         break;
+      case '-':
+         resultado = num1 - num2;
+         break;
+      case '*':
+         resultado = num1 * num2;
+         break;
+      case '/':
+         if (num2 == 0) {
+            escreva("Erro: divisão por zero");
+            return 1; ~ Encerra o programa com código de erro 1
+         } else {
+            resultado = num1 / num2;
+         }
+         break;
+      default:
+         escreva("Operador inválido");
+         return 1; ~ Encerra o programa com código de erro 1
+   }
+
+   escreva("O resultado é: %.2f", resultado);
+   return 0;
+}
